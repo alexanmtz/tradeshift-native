@@ -9,8 +9,6 @@ import Navigation from "./navigation";
 import { getStore } from "./store";
 import { initializeAssets } from "./assets";
 
-import AuthenticationScreen from "./screens/Authentication/Authentication.screen";
-
 const store = getStore();
 const userIsAuthenticated = false;
 
@@ -18,7 +16,7 @@ const getComponentOrLoading = (assetsReady, userIsAuthenticated) => {
   if(!assetsReady) {
     return (<AppLoading />)
   }
-  return userIsAuthenticated?(<Navigation/>):(<AuthenticationScreen/>)
+  return (<Navigation />)
 }
 
 export default class App extends Component {

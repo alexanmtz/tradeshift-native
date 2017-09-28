@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import { AsyncStorage, StyleSheet } from 'react-native'
 import { Text, View } from 'react-native-animatable'
 
@@ -8,29 +9,41 @@ import Button from '../../components/Button'
 import TextInput from '../../components/TextInput/TextInput.component'
 import measures from '../../constants/measures'
 
-export default class SignInForm extends Component {
-  static propTypes = {
-    // isLoading: PropTypes.bool.isRequired,
-    // onSignInPress: PropTypes.func.isRequired,
-    // onSignupLinkPress: PropTypes.func.isRequired
-  }
+import { NavigationActions } from 'react-navigation';
+
+class SignInForm extends Component {
 
   constructor(props) {
-		super(props);
-
-		this.state = {
+    super(props);
+    this.state = {
       email: '',
       password: ''
     };
 
-		this.authenticate = this.authenticate.bind(this);
-	}
+    this.authenticate = this.authenticate.bind(this);
+  }
 
   async authenticate() {
     authenticate(
       this.state.email,
       this.state.password
-    )
+    ).then(() => {
+      this.props.goto();
+    }).catch((e) => {
+      this.errorDispatch(e)
+    });
+  }
+
+  errorDispatch = (e) => {
+    Alert.alert(
+        'Login error',
+        'Please check your user and / or password',
+        [
+            { text: 'Try again', onPress: () => console.log('OK Pressed')},
+        ],
+        { cancelable: false }
+    );
+    console.log('error', e);
   }
 
   hideForm = async () => {
@@ -89,7 +102,7 @@ export default class SignInForm extends Component {
           <Text
             ref={(ref) => this.linkRef = ref}
             style={styles.signupLink}
-            onPress={this.authenticate}
+            onPress={() => this.props.back() }
             animation={'fadeIn'}
             duration={600}
             delay={400}
@@ -101,6 +114,21 @@ export default class SignInForm extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+    navigation: state.navigation
+});
+
+const mapDispatchToProps = dispatch => ({
+    goto: () => (
+        dispatch(NavigationActions.navigate({routeName: 'DocumentList'}))
+    ),
+    back: () => (
+        dispatch(NavigationActions.navigate({routeName: 'Authentication'}))
+    )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
 
 const styles = StyleSheet.create({
   container: {

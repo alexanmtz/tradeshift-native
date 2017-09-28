@@ -3,15 +3,22 @@ import { connect } from "react-redux";
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
 
 import Authentication from "./screens/Authentication/Authentication.screen";
+import DocumentList from "./screens/DocumentList/DocumentList.screen";
 
 export const routes = {
-  Authentication: { screen: Authentication }
+  Authentication: {
+    screen: Authentication,
+    routeName: 'Authentication'
+  },
+  DocumentList: {
+    screen: DocumentList,
+    routeName: 'DocumentList'
+  },
+
 };
 
 export const Navigator = StackNavigator(routes, {
-  navigationOptions: ({navigation}) => ({
-    title: navigation.state.title
-  })
+  initialRouteName: 'Authentication'
 });
 
 @connect(state => ({

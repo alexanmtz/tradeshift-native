@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native'
 import { Text, View } from 'react-native-animatable'
 
@@ -7,10 +8,6 @@ import colors from '../../constants/colors';
 import measures from '../../constants/measures';
 
 export default class AuthenticationOptions extends Component {
-  static propTypes = {
-    onCreateAccountPress: PropTypes.func.isRequired,
-    onSignInPress: PropTypes.func.isRequired
-  }
 
   render () {
     return (
@@ -43,6 +40,11 @@ export default class AuthenticationOptions extends Component {
       </View>
     )
   }
+}
+
+AuthenticationOptions.propTypes = {
+    onCreateAccountPress: PropTypes.func.isRequired,
+    onSignInPress: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

@@ -13,13 +13,6 @@ import SignInForm from './SignInForm'
 if (Platform.OS === 'android') UIManager.setLayoutAnimationEnabledExperimental(true)
 
 export default class AuthScreen extends Component {
-  static propTypes = {
-    // isLoggedIn: PropTypes.bool.isRequired,
-    // isLoading: PropTypes.bool.isRequired,
-    // signup: PropTypes.func.isRequired,
-    // login: PropTypes.func.isRequired,
-    // onSignInAnimationCompleted: PropTypes.func.isRequired // Called at the end of a succesfull login/signup animation
-  }
 
   state = {
     visibleForm: null // Can be: null | SIGNUP | LOGIN
@@ -74,7 +67,7 @@ export default class AuthScreen extends Component {
           />
         )}
         <KeyboardAvoidingView
-          keyboardVerticalOffset={-100}
+          keyboardVerticalOffset={-50}
           behavior={'padding'}
           style={[formStyle, styles.bottom]}
         >

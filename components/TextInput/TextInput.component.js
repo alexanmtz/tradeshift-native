@@ -1,13 +1,11 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { Platform, StyleSheet, TextInput } from 'react-native'
 import { View } from 'react-native-animatable'
 
 const IS_ANDROID = Platform.OS === 'android'
 
 export default class TextInputClean extends Component {
-  static propTypes = {
-    isEnabled: PropTypes.bool
-  }
 
   state = {
     isFocused: false
@@ -40,6 +38,10 @@ export default class TextInputClean extends Component {
       </View>
     )
   }
+}
+
+TextInputClean.propTypes = {
+    isEnabled: PropTypes.bool
 }
 
 const styles = StyleSheet.create({
