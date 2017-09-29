@@ -4,6 +4,7 @@ import { StackNavigator, addNavigationHelpers } from "react-navigation";
 
 import Authentication from "./screens/Authentication/Authentication.screen";
 import DocumentList from "./screens/DocumentList/DocumentList.screen";
+import DocumentView from "./screens/DocumentView/DocumentView.screen";
 
 export const routes = {
   Authentication: {
@@ -14,6 +15,10 @@ export const routes = {
     screen: DocumentList,
     routeName: 'DocumentList'
   },
+  DocumentView: {
+    screen: DocumentView,
+    routeName: 'DocumentView'
+  }
 
 };
 

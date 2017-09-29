@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { AsyncStorage, StyleSheet } from 'react-native'
+import { StyleSheet, Alert } from 'react-native'
 import { Text, View } from 'react-native-animatable'
+import { NavigationActions } from 'react-navigation';
 
 import { authenticate } from '../../api/authentication';
 
 import Button from '../../components/Button'
 import TextInput from '../../components/TextInput/TextInput.component'
 import measures from '../../constants/measures'
-
-import { NavigationActions } from 'react-navigation';
 
 class SignInForm extends Component {
 
@@ -24,14 +23,15 @@ class SignInForm extends Component {
   }
 
   async authenticate() {
-    authenticate(
+    /*authenticate(
       this.state.email,
       this.state.password
     ).then(() => {
       this.props.goto();
     }).catch((e) => {
       this.errorDispatch(e)
-    });
+    });*/
+    this.props.goto();
   }
 
   errorDispatch = (e) => {

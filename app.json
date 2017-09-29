@@ -4,7 +4,7 @@
    "icon": "./assets/appIcon.png",
    "version": "1.0.0",
    "slug": "tradeshift-native",
-   "sdkVersion": "20.0.0",
+   "sdkVersion": "21.0.0",
    "orientation": "portrait",
    "ios": {
      "bundleIdentifier": "com.tradeshift.app"
